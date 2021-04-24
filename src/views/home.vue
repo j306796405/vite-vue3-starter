@@ -12,7 +12,9 @@
 <script>
 export default {
   data() {
-    return {}
+    return {
+      test: 123
+    }
   }
 }
 </script>

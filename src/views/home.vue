@@ -13,7 +13,7 @@
 export default {
   data() {
     return {
-      test: 123
+      test: 2222
     }
   }
 }

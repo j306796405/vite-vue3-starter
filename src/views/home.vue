@@ -6,7 +6,7 @@
 <!--  -->
 <!--  -->
 <template>
-  <div></div>
+  <div>Home</div>
 </template>
 
 <script>

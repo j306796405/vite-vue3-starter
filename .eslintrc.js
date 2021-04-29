@@ -1,18 +1,14 @@
-/*
- * @Description: eslint配置
- * @Author: Jeffery
- * @Date: 2021-04-23 17:26:39
- */
 module.exports = {
   env: {
     browser: true,
-    es2021: true
+    es2021: true,
+    node: true
   },
   extends: [
     'plugin:vue/essential',
     'airbnb-base',
-    'plugin:jest/recommended',
-    'plugin:prettier/recommended' // 添加 prettier 插件
+    'plugin:prettier/recommended',
+    'plugin:jest/recommended'
   ],
   parserOptions: {
     ecmaVersion: 12,
@@ -20,5 +16,19 @@ module.exports = {
     sourceType: 'module'
   },
   plugins: ['vue', '@typescript-eslint'],
-  rules: {}
+  rules: {
+    'import/no-unresolved': 'off',
+    'import/extensions': 'off',
+    'import/no-absolute-path': 'off',
+    'import/no-extraneous-dependencies': 'off',
+    'vue/no-multiple-template-root': 'off',
+    'no-param-reassign': [
+      'error',
+      {
+        props: true,
+        ignorePropertyModificationsFor: ['state', 'config']
+      }
+    ]
+  },
+  settings: {}
 }

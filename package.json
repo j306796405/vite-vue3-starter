@@ -15,7 +15,9 @@
   "dependencies": {
     "axios": "^0.21.1",
     "element-plus": "^1.0.2-beta.40",
+    "js-cookie": "^2.2.1",
     "mockjs": "^1.1.0",
+    "moment": "^2.29.1",
     "vue": "^3.0.5",
     "vue-router": "^4.0.6",
     "vuex": "^4.0.0"
@@ -46,6 +48,10 @@
     "lint-staged": "^10.5.4",
     "prettier": "^2.2.1",
     "sass": "^1.32.12",
+    "stylelint": "^13.13.0",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-standard": "^22.0.0",
+    "stylelint-order": "^4.1.0",
     "ts-jest": "^26.5.5",
     "typescript": "^4.1.3",
     "vite": "^2.1.5",

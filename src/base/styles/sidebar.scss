@@ -1,0 +1,146 @@
+#app {
+  // 主体区域
+  .main-container {
+    position: relative;
+    height: 100%;
+    margin-left: 100px;
+    background-color: $bg;
+  }
+
+  // 侧边栏
+  .sidebar-container {
+    transition: width 0.28s;
+    width: 100px;
+    height: 100%;
+    position: fixed;
+    font-size: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1001;
+    overflow: hidden;
+
+    .svg-icon {
+      display: block;
+      margin: 0 auto 12px;
+      font-size: 24px;
+    }
+    .el-menu {
+      border: none;
+      width: 100% !important;
+    }
+
+    [class^='el-icon'] {
+      font-size: 13px;
+      color: #fff;
+    }
+
+    .el-submenu [class^='el-icon-'] {
+      margin-right: 3px;
+    }
+
+    .el-menu-item.el-menu-item-first-level {
+      height: auto;
+      line-height: normal;
+    }
+
+    .el-menu-item-first-level {
+      background-color: $menuBg;
+
+      > .el-submenu__title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 88px;
+        padding: 0 !important;
+        text-align: center;
+        font-size: 14px;
+        color: #fff;
+
+        > .el-submenu__icon-arrow {
+          display: none;
+        }
+      }
+
+      &:hover {
+        .el-submenu__title {
+          background: $white;
+
+          .svg-icon,
+          .slot-title {
+            color: $menuBg;
+          }
+        }
+      }
+    }
+
+    .slot-title {
+      line-height: normal;
+    }
+
+    .el-submenu__icon-arrow {
+      right: 15px;
+      margin-top: -5px;
+      font-size: 12px;
+    }
+  }
+
+  .sidebar-container {
+    .el-submenu,
+    .el-menu-item {
+      &.is-active {
+        background-color: $menuHover;
+        color: #fff;
+
+        .svg-icon,
+        .slot-title {
+          color: $menuBg;
+        }
+      }
+    }
+
+    // 动画样式有问题，暂移除
+    .el-menu-item,
+    .el-submenu__title {
+      transition: none;
+    }
+
+    .el-menu-item {
+      &:hover {
+        background-color: $menuHover !important;
+      }
+    }
+  }
+}
+
+.g-sidebar {
+  top: 0 !important;
+  bottom: 0 !important;
+
+  .el-menu--popup {
+    min-width: 150px;
+    max-height: 100% !important;
+    height: 100% !important;
+  }
+
+  .el-menu--popup-right-start {
+    margin-left: 0;
+  }
+
+  .el-submenu .el-menu-item {
+    min-width: 150px;
+  }
+
+  .el-menu-item,
+  .el-submenu__title {
+    height: 32px;
+    line-height: 32px;
+    font-size: 12px;
+    color: $black;
+
+    &.is-active {
+      color: #e6f0f9;
+    }
+  }
+}

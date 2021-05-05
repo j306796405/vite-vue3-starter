@@ -1,5 +1,9 @@
+/*
+ * @Author: Jeffery Jiang
+ * @Description:
+ */
 import { createStore, createLogger } from 'vuex';
-import { app, AppState } from '/@/base/store/modules/app';
+import { AppState } from '/@/base/store/modules/app';
 
 export interface RootState {
   app: AppState;
@@ -13,11 +17,4 @@ const plugins = debug ? [createLogger({})] : [];
 
 export const store = createStore({
   plugins,
-  modules: {
-    app,
-  },
 });
-
-export function useStore() {
-  return store;
-}

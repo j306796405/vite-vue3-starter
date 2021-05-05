@@ -14,4 +14,3 @@ dist
 /bin
 Dockerfile
 mock
-src

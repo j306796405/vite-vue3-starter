@@ -6,7 +6,7 @@ export function getToken() {
   return Cookies.get(TokenKey);
 }
 
-export function setToken(token) {
+export function setToken(token: string) {
   return Cookies.set(TokenKey, token);
 }
 
@@ -15,7 +15,7 @@ export function removeToken() {
 }
 
 export function removeAll() {
-  Object.keys(Cookies.get()).forEach(function (cookieName) {
+  Object.keys(Cookies.get()).forEach((cookieName: string) => {
     Cookies.remove(cookieName);
   });
 }

@@ -121,15 +121,15 @@ export class VAxios {
   }
 
   /**
-   * @description:  File Upload
+   * @description:  文件上传
    */
   uploadFile<T = any>(config: AxiosRequestConfig, params: UploadFileParams) {
     const formData = new window.FormData();
 
     if (params.data) {
       Object.keys(params.data).forEach((key) => {
-        if (!params.data) return;
-        const value = params.data[key];
+        // if (!params.data) return;
+        const value = params?.data?.[key] ?? '';
         if (Array.isArray(value)) {
           value.forEach((item) => {
             formData.append(`${key}[]`, item);
@@ -137,7 +137,7 @@ export class VAxios {
           return;
         }
 
-        formData.append(key, params.data[key]);
+        formData.append(key, params?.data?.[key]);
       });
     }
 
@@ -155,6 +155,7 @@ export class VAxios {
   }
 
   // support form-data
+  // ??? 干嘛用的
   supportFormData(config: AxiosRequestConfig) {
     const headers = config.headers;
     const contentType = headers?.['Content-Type'] || headers?.['content-type'];
@@ -195,6 +196,7 @@ export class VAxios {
 
     const { requestOptions } = this.options;
 
+    // 自定义RequestOptions合并
     const opt: RequestOptions = Object.assign({}, requestOptions, options);
 
     const { beforeRequestHook, requestCatchHook, transformRequestHook } = transform || {};
@@ -202,6 +204,7 @@ export class VAxios {
       conf = beforeRequestHook(conf, opt);
     }
 
+    // ???
     conf = this.supportFormData(conf);
 
     return new Promise((resolve, reject) => {
@@ -213,6 +216,7 @@ export class VAxios {
             ret !== errorResult ? resolve(ret) : reject(new Error('request error!'));
             return;
           }
+          // ???这是什么用法
           resolve((res as unknown) as Promise<T>);
         })
         .catch((e: Error) => {

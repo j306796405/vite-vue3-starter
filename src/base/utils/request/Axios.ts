@@ -79,13 +79,14 @@ export class VAxios {
 
     const axiosCanceler = new AxiosCanceler();
 
-    // Request interceptor configuration processing
+    // Request interceptor
     this.axiosInstance.interceptors.request.use((config: AxiosRequestConfig) => {
       // If cancel repeat request is turned on, then cancel repeat request is prohibited
       const {
         headers: { ignoreCancelToken },
       } = config;
 
+      debugger;
       // ??? ignoreCancel是干嘛的
       const ignoreCancel =
         ignoreCancelToken !== undefined
@@ -99,7 +100,7 @@ export class VAxios {
       return config;
     }, undefined);
 
-    // Request interceptor error capture
+    // Request error interceptor
     requestInterceptorsCatch &&
       isFunction(requestInterceptorsCatch) &&
       this.axiosInstance.interceptors.request.use(undefined, requestInterceptorsCatch);

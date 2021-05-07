@@ -6,6 +6,7 @@ import { isFunction } from '/@/base/utils/is';
 // Used to store the identification and cancellation function of each request
 let pendingMap = new Map<string, Canceler>();
 
+// 获取 get & url 格式
 export const getPendingUrl = (config: AxiosRequestConfig) => [config.method, config.url].join('&');
 
 export class AxiosCanceler {
@@ -27,7 +28,7 @@ export class AxiosCanceler {
   }
 
   /**
-   * @description: Clear all pending
+   * @description: 清除所有pending
    */
   removeAllPending() {
     pendingMap.forEach((cancel) => {
@@ -37,15 +38,14 @@ export class AxiosCanceler {
   }
 
   /**
-   * Removal request
+   * 清除对应的pending
    * @param {Object} config
    */
   removePending(config: AxiosRequestConfig) {
     const url = getPendingUrl(config);
 
+    // 如果pendingMap中有对应url，则cancel和delete
     if (pendingMap.has(url)) {
-      // If there is a current request identifier in pending,
-      // the current request needs to be cancelled and removed
       const cancel = pendingMap.get(url);
       cancel && cancel(url);
       pendingMap.delete(url);
@@ -53,7 +53,7 @@ export class AxiosCanceler {
   }
 
   /**
-   * @description: reset
+   * @description: 重置 pendingMap
    */
   reset(): void {
     pendingMap = new Map<string, Canceler>();

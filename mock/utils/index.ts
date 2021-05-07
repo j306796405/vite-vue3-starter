@@ -1,11 +1,9 @@
 // Interface data format used to return a unified format
 
-export function resultSuccess(result: any, { message = 'ok' } = {}) {
+export function resultSuccess(message: any) {
   return {
-    code: 0,
-    result,
-    message,
-    type: 'success'
+    status: 'OK',
+    message
   }
 }
 

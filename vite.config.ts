@@ -24,6 +24,10 @@ export default defineConfig({
         find: /\/@\//,
         replacement: `${pathResolve('src')}/`,
       },
+      {
+        find: /\/m\//,
+        replacement: `${pathResolve('mock')}/`,
+      },
     ],
   },
   base: './', // 设置打包路径

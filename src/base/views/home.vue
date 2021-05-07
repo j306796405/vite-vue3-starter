@@ -1,19 +1,24 @@
-<!--
- * @Description: 
- * @Author: Jeffery
- * @Date: 2021-04-23 16:30:55
--->
 <template>
-  <div>Home</div>
   <el-button>默认按钮</el-button>
 </template>
 
 <script lang="ts">
-  import { appStore } from '/@/base/store/modules/app';
+import { onMounted } from 'vue'
+  import { login, test } from '/@/base/services/login';
+  // import { getBusinessList } from '/@/base/services/user';
 
   export default {
     setup() {
-      console.log(appStore.getDevice);
+      onMounted(async () => {
+        // const res = await login({
+        //     "userName": "hq01uh422",
+        //     "password": "123456"
+        // })
+
+        const res = await test()
+        console.log(res)
+      })
+      
     },
   };
 </script>

@@ -1,4 +1,4 @@
-import { isObject, isString } from '/@/utils/is';
+import { isObject, isString } from '/@/base/utils/is';
 
 export function createNow<T extends boolean>(
   join: boolean,
@@ -22,9 +22,11 @@ const DATE_TIME_FORMAT = 'YYYY-MM-DD HH:mm';
  */
 export function formatRequestDate(params: any) {
   for (const key in params) {
+    // 将moment object转换成 'YYYY-MM-DD HH:mm'
     if (params[key] && params[key]._isAMomentObject) {
       params[key] = params[key].format(DATE_TIME_FORMAT);
     }
+    // trim 字符串
     if (isString(key)) {
       const value = params[key];
       if (value) {
@@ -35,6 +37,7 @@ export function formatRequestDate(params: any) {
         }
       }
     }
+    // 递归转换
     if (isObject(params[key])) {
       formatRequestDate(params[key]);
     }

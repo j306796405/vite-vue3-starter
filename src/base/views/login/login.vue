@@ -52,7 +52,7 @@
 </template>
 
 <script>
-  import { defineComponent, reactive, ref, toRefs, onBeforeMount } from 'vue';
+  import { defineComponent, reactive, ref, unref, toRefs, onBeforeMount } from 'vue';
   import { isValidUsername } from '/@/base/utils/validate';
   import logoPng from '/@/base/assets/images/logo-metersbonwe.png';
 
@@ -86,24 +86,29 @@
         }
       };
 
-      const handleLogin = () => {
-        loginFormRef.value.validate((valid) => {
-          if (valid) {
-            state.loading = true;
-            this.$store
-              //   .dispatch('Login', this.loginForm)
-              .then(() => {
-                state.loading = false;
-                this.$router.push({ path: '/' });
-                location.reload();
-              })
-              .catch(() => {
-                state.loading = false;
-              });
-          } else {
-            return false;
-          }
-        });
+      const handleLogin = async () => {
+        const form = unref(loginFormRef);
+        if (!form) return;
+        const data = await form.validate();
+        console.log(data);
+        // console.log(data)
+        // loginFormRef.value.validate((valid) => {
+        //   if (valid) {
+        //     state.loading = true;
+        //     this.$store
+        //       //   .dispatch('Login', this.loginForm)
+        //       .then(() => {
+        //         state.loading = false;
+        //         this.$router.push({ path: '/' });
+        //         location.reload();
+        //       })
+        //       .catch(() => {
+        //         state.loading = false;
+        //       });
+        //   } else {
+        //     return false;
+        //   }
+        // });
       };
 
       return {

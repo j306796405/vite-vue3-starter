@@ -29,6 +29,7 @@ const transform: AxiosTransform = {
    */
   transformRequestHook: (res: AxiosResponse<Result>, options: RequestOptions) => {
     const { data } = res;
+    // 错误的时候返回
     if (!data) {
       // return '[HTTP] Request has no return value';
       return errorResult;
@@ -39,7 +40,6 @@ const transform: AxiosTransform = {
     if (!isTransformRequestResult) {
       return res.data;
     }
-    // 错误的时候返回
 
     //  这里 code，result，message为 后台统一的字段，需要在 types.ts内修改为项目自己的接口返回格式
     const { status, message } = data;
@@ -156,10 +156,10 @@ export function createAxios(opt?: Partial<CreateAxiosOptions>) {
   return new VAxios(
     merge(
       {
-        timeout: 1000,
+        timeout: 30 * 1000,
         // 基础接口地址
         baseURL: ProxyEnum.ManagementProxy,
-        headers: { 'Content-Type': ContentTypeEnum.JSON, ignoreCancelToken: false },
+        headers: { 'Content-Type': ContentTypeEnum.JSON },
         // 数据处理方式
         transform,
         // 配置项，下面的选项都可以在独立的接口请求中覆盖
@@ -174,9 +174,13 @@ export function createAxios(opt?: Partial<CreateAxiosOptions>) {
           formatDate: true,
           // 消息提示类型 普通: message 重要: modal
           errorMessageMode: 'message',
-          //  是否加入时间戳
+          // 是否加入时间戳
           joinTime: true,
-          // 忽略重复请求
+          /**
+           * 忽略重复请求
+           * 1: 如果为get请求，joinTime需设置为false，因为时间戳的原因pending key会匹配不上
+           * 2: 两次请求不应该是同步代码
+           */
           ignoreCancelToken: true,
         },
       },

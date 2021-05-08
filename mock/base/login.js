@@ -17,6 +17,7 @@ module.exports = [
   {
     url: '/yfbgad-server-manager/display/selectByPageOfMy',
     type: 'get',
+    timeout: 1000,
     response: () => {
       const message = {
         "totalRecord": 6,

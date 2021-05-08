@@ -4,6 +4,7 @@ import { viteMockServe } from 'vite-plugin-mock';
 import { resolve } from 'path';
 import moment from 'moment';
 import pkg from './package.json';
+import styleImport from 'vite-plugin-style-import';
 
 const { dependencies, devDependencies, name, version } = pkg;
 const APP_INFO = {
@@ -17,7 +18,26 @@ function pathResolve(dir: string) {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), viteMockServe({ supportTs: false })],
+  plugins: [
+    vue(),
+    viteMockServe({ supportTs: false }),
+    styleImport({
+      libs: [
+        {
+          libraryName: 'element-plus',
+          esModule: true,
+          ensureStyleFile: true,
+          resolveStyle: (name) => {
+            name = name.slice(3);
+            return `element-plus/packages/theme-chalk/src/${name}.scss`;
+          },
+          resolveComponent: (name) => {
+            return `element-plus/lib/${name}`;
+          },
+        },
+      ],
+    }),
+  ],
   resolve: {
     alias: [
       {
@@ -45,6 +65,13 @@ export default defineConfig({
     //     rewrite: (path) => path.replace('/api/', '/')
     //   }
     // }
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "./src/base/styles/variables.scss";`,
+      },
+    },
   },
   define: {
     __APP_INFO__: JSON.stringify(APP_INFO),

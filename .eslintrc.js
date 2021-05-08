@@ -1,14 +1,17 @@
-module.exports = {
+const { defineConfig } = require('eslint-define-config');
+
+module.exports = defineConfig({
   env: {
     browser: true,
     es2021: true,
     node: true,
   },
+  parser: 'vue-eslint-parser',
   extends: [
     'plugin:vue/vue3-recommended',
     'plugin:@typescript-eslint/recommended',
+    'prettier',
     'plugin:prettier/recommended',
-    'plugin:jest/recommended',
   ],
   parserOptions: {
     ecmaVersion: 12,
@@ -66,4 +69,4 @@ module.exports = {
     ],
   },
   settings: {},
-};
+});

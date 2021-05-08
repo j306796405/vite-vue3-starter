@@ -9,6 +9,14 @@ import Vuex from '/@/base/views/vuex.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
+    path: '/login',
+    name: 'login',
+    component: () => import('/@/base/views/login'),
+    meta: {
+      title: '登录',
+    },
+  },
+  {
     path: '/',
     name: 'Home',
     component: Home,

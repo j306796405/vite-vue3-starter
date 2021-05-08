@@ -1,0 +1,51 @@
+.login-page {
+    height: 100%;
+    background-color: $white;
+  }
+  
+  .login-header {
+    height: 100px;
+    padding: 44px 0 0 64px;
+  
+    &-logo {
+      display: block;
+      max-width: 100%;
+    }
+  }
+  
+  .login {
+    position: relative;
+    height: calc(100vh - 100px);
+    background: url('/src/base/assets/images/bg-login-item.png') 135px 35% no-repeat,
+      url('/src/base/assets/images/bg-login.jpg');
+    background-repeat: no-repeat;
+    background-size: 36%, cover;
+  
+    &-modal {
+      position: absolute;
+      top: 40%;
+      right: 202px;
+      width: 325px;
+      height: 300px;
+      padding: 20px;
+      background-color: $white;
+      border-radius: 4px;
+      transform: translateY(-50%);
+    }
+  
+    &-title {
+      margin: 9px 0 26px;
+      font-size: 16px;
+      font-weight: 500;
+      color: #606266;
+    }
+  
+    &-action {
+      margin-top: 36px;
+  
+      &-button {
+        width: 100%;
+      }
+    }
+  }
+  

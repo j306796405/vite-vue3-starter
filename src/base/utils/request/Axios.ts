@@ -86,8 +86,6 @@ export class VAxios {
         headers: { ignoreCancelToken },
       } = config;
 
-      debugger;
-      // ??? ignoreCancel是干嘛的
       const ignoreCancel =
         ignoreCancelToken !== undefined
           ? ignoreCancelToken
@@ -107,7 +105,8 @@ export class VAxios {
 
     // Response result interceptor processing
     this.axiosInstance.interceptors.response.use((res: AxiosResponse<any>) => {
-      // ???这是干啥
+      debugger;
+      // 接口返回成功移除对应的axiosCanceler
       res && axiosCanceler.removePending(res.config);
       if (responseInterceptors && isFunction(responseInterceptors)) {
         res = responseInterceptors(res);
@@ -217,7 +216,7 @@ export class VAxios {
             ret !== errorResult ? resolve(ret) : reject(new Error('request error!'));
             return;
           }
-          // ???这是什么用法
+          // res 为AxiosResponse<Result> 不匹配T，所以先转unknown再转T
           resolve((res as unknown) as Promise<T>);
         })
         .catch((e: Error) => {

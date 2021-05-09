@@ -3,11 +3,6 @@
  * @Description:
  */
 import { createStore, createLogger } from 'vuex';
-import { AppState } from '/@/base/store/modules/app';
-
-export interface RootState {
-  app: AppState;
-}
 
 // Plug in logger when in development environment
 const debug = process.env.NODE_ENV !== 'production';

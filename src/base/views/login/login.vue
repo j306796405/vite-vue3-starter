@@ -32,7 +32,7 @@
               autoComplete="on"
               placeholder="密码"
               prefix-icon="el-icon-lock"
-              show-password="true"
+              :show-password="true"
             />
           </el-form-item>
           <el-form-item class="login-action">
@@ -51,10 +51,12 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
   import { defineComponent, reactive, ref, unref, toRefs, onBeforeMount } from 'vue';
   import { isValidUsername } from '/@/base/utils/validate';
   import logoPng from '/@/base/assets/images/logo-metersbonwe.png';
+  import { userStore } from '/@/base/store/modules/user';
+  import { LoginActionModel } from '/@/base/services/models/user';
 
   export default defineComponent({
     name: 'Login',
@@ -87,10 +89,14 @@
       };
 
       const handleLogin = async () => {
-        const form = unref(loginFormRef);
+        const form: LoginActionModel = unref(loginFormRef);
         if (!form) return;
-        const data = await form.validate();
-        console.log(data);
+
+        const isValidate = await form.validate();
+        if (isValidate) {
+          const res = await userStore.login(form);
+          console.log(res);
+        }
         // console.log(data)
         // loginFormRef.value.validate((valid) => {
         //   if (valid) {

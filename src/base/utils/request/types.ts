@@ -3,6 +3,7 @@ import { RequestStatusEnum } from '/@/base/enums/httpEnum';
 export type ErrorMessageMode = 'none' | 'modal' | 'message' | undefined;
 
 export interface RequestOptions {
+  [x: string]: any;
   // Splicing request parameters to url
   joinParamsToUrl?: boolean;
   // Format request parameter time

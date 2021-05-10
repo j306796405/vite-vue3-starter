@@ -1,16 +1,12 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import Home from '/@/base/views/home.vue';
 import Vuex from '/@/base/views/vuex.vue';
-import Login from '/@/base/views/login';
-
-console.log(Login);
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/login',
     name: 'login',
-    // component: () => import('/@/base/views/login'),
-    component: Login,
+    component: () => import('/@/base/views/login'),
     meta: {
       title: '登录',
     },

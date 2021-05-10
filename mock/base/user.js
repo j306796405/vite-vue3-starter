@@ -1,20 +1,19 @@
-import { resultSuccess, getCommonOpts } from "../utils";
+import { resultSuccess, getCommonOpts } from '../utils';
 
 module.exports = [
   {
     url: '/permission.web/users/login',
     type: 'post',
-    statusCode: 500,
     ...getCommonOpts(),
     response: () => {
       const message = {
-        "id": "24965888515310722421904159111896988628510264220008225018301072820646524303461",
-        "code": "HQ01UH422",
-        "name": "蒋林捷",
-        "orgCode": "HQ08S032,HQ01S400,HQ01S116"
-    }
-      return resultSuccess(message)
-    }
+        id: '24965888515310722421904159111896988628510264220008225018301072820646524303461',
+        code: 'HQ01UH422',
+        name: '蒋林捷',
+        orgCode: 'HQ08S032,HQ01S400,HQ01S116',
+      };
+      return resultSuccess(message);
+    },
   },
   {
     url: '/permission.web/users/loginUser',
@@ -22,12 +21,12 @@ module.exports = [
     ...getCommonOpts(),
     response: () => {
       const message = {
-        "id":"24965888515310722421904159111896988628510264220008225018301072820646524303461",
-        "code":"HQ01UH422",
-        "name":"蒋林捷",
-        "orgCode":"HQ08S032,HQ01S400,HQ01S116"
-      }
-      return resultSuccess(message)
+        id: '24965888515310722421904159111896988628510264220008225018301072820646524303461',
+        code: 'HQ01UH422',
+        name: '蒋林捷',
+        orgCode: 'HQ08S032,HQ01S400,HQ01S116',
+      };
+      return resultSuccess(message);
     },
   },
   {
@@ -66,14 +65,16 @@ module.exports = [
               lastModifyTime: '2021-02-22 09:59:48',
               items: [
                 {
-                  id: '24066557801059520878602263257902735607972864563460797779787819780920131543397',
+                  id:
+                    '24066557801059520878602263257902735607972864563460797779787819780920131543397',
                   label: '属性',
                   url: '/goods/attr',
                   businessCode: 'management-center',
                   order: 0,
                   isMenu: 1,
                   code: 'goodsAttr',
-                  data: '24066557801059520878602263257902735607972864563460797779787819780920131543397',
+                  data:
+                    '24066557801059520878602263257902735607972864563460797779787819780920131543397',
                   datas: { version: 0 },
                   windowOpen: 0,
                   navbar: 1,
@@ -82,7 +83,8 @@ module.exports = [
                   routerLink: '/goods/attr',
                   items: [
                     {
-                      id: '45768781815437665200412824589275480399792236566856695056135957142772893626981',
+                      id:
+                        '45768781815437665200412824589275480399792236566856695056135957142772893626981',
                       label: '属性管理',
                       url: '/goods/attr/manage',
                       businessCode: 'management-center',
@@ -99,7 +101,8 @@ module.exports = [
                       routerLink: '/goods/attr/manage',
                     },
                     {
-                      id: '44413920695527971528250168739573003928781404806347260123868803079957369663798',
+                      id:
+                        '44413920695527971528250168739573003928781404806347260123868803079957369663798',
                       label: '品牌管理',
                       url: '/goods/attr/brandsManagement',
                       businessCode: 'management-center',
@@ -116,7 +119,8 @@ module.exports = [
                       routerLink: '/goods/attr/brandsManagement',
                     },
                     {
-                      id: '44413630827237628845165855933288811966494774637952137351453440899033622196534',
+                      id:
+                        '44413630827237628845165855933288811966494774637952137351453440899033622196534',
                       label: '标签分类',
                       url: '/goods/attr/tags',
                       businessCode: 'management-center',
@@ -133,7 +137,8 @@ module.exports = [
                       routerLink: '/goods/attr/tags',
                     },
                     {
-                      id: '25504771397301814707141534452756486467185386631432939076149507897388530152037',
+                      id:
+                        '25504771397301814707141534452756486467185386631432939076149507897388530152037',
                       label: '基础分类',
                       url: '/goods/attr/cate',
                       businessCode: 'management-center',
@@ -150,7 +155,8 @@ module.exports = [
                       routerLink: '/goods/attr/cate',
                     },
                     {
-                      id: '25416779819948305217614929557751768351033537352842072919919608409446171095347',
+                      id:
+                        '25416779819948305217614929557751768351033537352842072919919608409446171095347',
                       label: '色系管理',
                       url: '/goods/attr/colors',
                       businessCode: 'management-center',
@@ -167,7 +173,8 @@ module.exports = [
                       routerLink: '/goods/attr/colors',
                     },
                     {
-                      id: '24513630929774174471557025551312168381040966914864274733907131785448895297121',
+                      id:
+                        '24513630929774174471557025551312168381040966914864274733907131785448895297121',
                       label: '数据字典',
                       url: '/goods/attr/dict',
                       businessCode: 'management-center',
@@ -184,7 +191,8 @@ module.exports = [
                       routerLink: '/goods/attr/dict',
                     },
                     {
-                      id: '22791246290232158649338727840248443872884393611167316658135633242960451154230',
+                      id:
+                        '22791246290232158649338727840248443872884393611167316658135633242960451154230',
                       label: '外部属性管理',
                       url: '/goods/attr/manage/external',
                       businessCode: 'management-center',
@@ -203,14 +211,16 @@ module.exports = [
                   ],
                 },
                 {
-                  id: '25423840139858344233912321131174776956936813547966086679772401617692504699190',
+                  id:
+                    '25423840139858344233912321131174776956936813547966086679772401617692504699190',
                   label: '国际码',
                   url: '/goods/code',
                   businessCode: 'management-center',
                   order: 0,
                   isMenu: 1,
                   code: 'goodsCode',
-                  data: '25423840139858344233912321131174776956936813547966086679772401617692504699190',
+                  data:
+                    '25423840139858344233912321131174776956936813547966086679772401617692504699190',
                   datas: { version: 0 },
                   windowOpen: 0,
                   navbar: 1,
@@ -219,7 +229,8 @@ module.exports = [
                   routerLink: '/goods/code',
                   items: [
                     {
-                      id: '25962445549554977767986933522264483734945005942771547206303433878230593188453',
+                      id:
+                        '25962445549554977767986933522264483734945005942771547206303433878230593188453',
                       label: '国际码自动生成',
                       url: '/goods/code/generate',
                       businessCode: 'management-center',
@@ -236,7 +247,8 @@ module.exports = [
                       routerLink: '/goods/code/generate',
                     },
                     {
-                      id: '24524205807301616146828667210976906516853754003882792731576629688595121254710',
+                      id:
+                        '24524205807301616146828667210976906516853754003882792731576629688595121254710',
                       label: '回收国际码',
                       url: '/goods/code/recycle',
                       businessCode: 'management-center',
@@ -253,7 +265,8 @@ module.exports = [
                       routerLink: '/goods/code/recycle',
                     },
                     {
-                      id: '44415672472320643456627954976976862122953011457054217011116633452692495413861',
+                      id:
+                        '44415672472320643456627954976976862122953011457054217011116633452692495413861',
                       label: '国际码系统证书设置',
                       url: '/goods/code/systemCert',
                       businessCode: 'management-center',
@@ -270,7 +283,8 @@ module.exports = [
                       routerLink: '/goods/code/systemCert',
                     },
                     {
-                      id: '44865893934613908130766176622260549527578247123326040125348588015347314012470',
+                      id:
+                        '44865893934613908130766176622260549527578247123326040125348588015347314012470',
                       label: '品牌前缀设置',
                       url: '/goods/code/intercodeBrandPrefix',
                       businessCode: 'management-center',
@@ -289,14 +303,16 @@ module.exports = [
                   ],
                 },
                 {
-                  id: '23614285042146496429957228271331419784584548002019347683727032899324606689893',
+                  id:
+                    '23614285042146496429957228271331419784584548002019347683727032899324606689893',
                   label: '商品',
                   url: '/goods/category',
                   businessCode: 'management-center',
                   order: 0,
                   isMenu: 1,
                   code: 'goodsCategory',
-                  data: '23614285042146496429957228271331419784584548002019347683727032899324606689893',
+                  data:
+                    '23614285042146496429957228271331419784584548002019347683727032899324606689893',
                   datas: { version: 1 },
                   windowOpen: 0,
                   navbar: 1,
@@ -305,7 +321,8 @@ module.exports = [
                   routerLink: '/goods/category',
                   items: [
                     {
-                      id: '21886323763652951688052388040703285180372315954046764038099769419240205005110',
+                      id:
+                        '21886323763652951688052388040703285180372315954046764038099769419240205005110',
                       label: '商品监控',
                       url: '/goods/category/monitoring',
                       businessCode: 'management-center',
@@ -322,7 +339,8 @@ module.exports = [
                       routerLink: '/goods/category/monitoring',
                     },
                     {
-                      id: '23700839982094978888303471299793970698955399777867854987209743814549633577270',
+                      id:
+                        '23700839982094978888303471299793970698955399777867854987209743814549633577270',
                       label: '商品对比',
                       url: '/goods/category/compare/list',
                       businessCode: 'management-center',
@@ -339,7 +357,8 @@ module.exports = [
                       routerLink: '/goods/category/compare/list',
                     },
                     {
-                      id: '24967993682640583558702236449809500009616972302871459353879316226050812555877',
+                      id:
+                        '24967993682640583558702236449809500009616972302871459353879316226050812555877',
                       label: 'sku查询',
                       url: '/goods/category/sku',
                       businessCode: 'management-center',
@@ -356,7 +375,8 @@ module.exports = [
                       routerLink: '/goods/category/sku',
                     },
                     {
-                      id: '22702585054743305114210792518817509817279780056105513691082797916396037681462',
+                      id:
+                        '22702585054743305114210792518817509817279780056105513691082797916396037681462',
                       label: '下载目录',
                       url: '/goods/category/download',
                       businessCode: 'management-center',
@@ -373,7 +393,8 @@ module.exports = [
                       routerLink: '/goods/category/download',
                     },
                     {
-                      id: '24061614936846079307234809065771339241735779884369900604169504683285506240822',
+                      id:
+                        '24061614936846079307234809065771339241735779884369900604169504683285506240822',
                       label: '商品管理',
                       url: '/goods/category/manage/list',
                       businessCode: 'management-center',
@@ -390,7 +411,8 @@ module.exports = [
                       routerLink: '/goods/category/manage/list',
                     },
                     {
-                      id: '22342142645546486424091263259901012643504296539080810913236879362175147455077',
+                      id:
+                        '22342142645546486424091263259901012643504296539080810913236879362175147455077',
                       label: '商品评论',
                       url: '/goods/comment',
                       businessCode: 'management-center',
@@ -407,7 +429,8 @@ module.exports = [
                       routerLink: '/goods/comment',
                     },
                     {
-                      id: '22791232486739535773485004955097453291830342628946949077189877162552553713974',
+                      id:
+                        '22791232486739535773485004955097453291830342628946949077189877162552553713974',
                       label: '辅料管理',
                       url: '/goods/accessory',
                       businessCode: 'management-center',
@@ -426,14 +449,16 @@ module.exports = [
                   ],
                 },
                 {
-                  id: '22708211384356211659331051766190404044313802462338348531307829362986788807991',
+                  id:
+                    '22708211384356211659331051766190404044313802462338348531307829362986788807991',
                   label: '深绘',
                   url: '/goods/image',
                   businessCode: 'management-center',
                   order: 0,
                   isMenu: 1,
                   code: 'goodsImage',
-                  data: '22708211384356211659331051766190404044313802462338348531307829362986788807991',
+                  data:
+                    '22708211384356211659331051766190404044313802462338348531307829362986788807991',
                   datas: { version: 1 },
                   windowOpen: 0,
                   navbar: 1,
@@ -442,7 +467,8 @@ module.exports = [
                   routerLink: '/goods/image',
                   items: [
                     {
-                      id: '25503342623231657524562566617508218548892325074806699229106632640347841311030',
+                      id:
+                        '25503342623231657524562566617508218548892325074806699229106632640347841311030',
                       label: '图片管理',
                       url: '/goods/image/manage',
                       businessCode: 'management-center',
@@ -465,16 +491,16 @@ module.exports = [
           ],
         },
       ];
-      return resultSuccess(message)
-    }
+      return resultSuccess(message);
+    },
   },
   {
     url: '/permission.web/users/logout',
     ...getCommonOpts(),
     type: 'post',
     response: () => {
-      const message = '退出成功'
-      return resultSuccess(message)
-    }
-  }
-]
+      const message = '退出成功';
+      return resultSuccess(message);
+    },
+  },
+];

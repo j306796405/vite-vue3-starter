@@ -30,10 +30,10 @@ export default class User extends VuexModule {
     try {
       const info = await login(userInfo);
       this.commitInfo(info);
-      setToken(info.code);
+      setToken(info.id);
       return info;
     } catch (error) {
-      error(error);
+      logError(error);
       return null;
     }
   }
@@ -43,10 +43,10 @@ export default class User extends VuexModule {
     try {
       const info = await getLoginUser();
       this.commitInfo(info);
-      setToken(info.code);
+      // setToken(info.id);
       return info;
     } catch (error) {
-      console.warn(error);
+      logError(error);
       return null;
     }
   }

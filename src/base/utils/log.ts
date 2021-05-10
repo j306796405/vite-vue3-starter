@@ -8,5 +8,5 @@ export function logWarn(message: string) {
 }
 
 export function logError(message: string) {
-  console.error(`[${projectName} ${version} warn]:${message}`);
+  console.error(`[${projectName} ${version} error]:${message}`);
 }

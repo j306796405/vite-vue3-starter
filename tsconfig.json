@@ -7,7 +7,7 @@
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
     "strictFunctionTypes": false,
-    "jsx": "preserve",
+    "jsx": "react", // preserve 保留JSX 输出jsx文件、react生成React.createElement 输出js
     "baseUrl": ".",
     "allowJs": true,
     "sourceMap": true,

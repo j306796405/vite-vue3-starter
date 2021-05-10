@@ -1,4 +1,4 @@
-import type { AxiosRequestConfig, AxiosInstance, AxiosResponse } from 'axios';
+import type { AxiosRequestConfig, AxiosInstance, AxiosResponse, AxiosError } from 'axios';
 import type { RequestOptions, Result, UploadFileParams } from './types';
 import type { CreateAxiosOptions } from './axiosTransform';
 
@@ -116,12 +116,9 @@ export class VAxios {
     // Response result interceptor error capture
     responseInterceptorsCatch &&
       isFunction(responseInterceptorsCatch) &&
-      this.axiosInstance.interceptors.response.use(
-        undefined,
-        (error: responseInterceptorsCatch) => {
-          responseInterceptorsCatch(error);
-        }
-      );
+      this.axiosInstance.interceptors.response.use(undefined, (error: AxiosError) => {
+        responseInterceptorsCatch(error, this.options.requestOptions);
+      });
   }
 
   /**

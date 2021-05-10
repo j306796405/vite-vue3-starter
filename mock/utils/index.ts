@@ -36,6 +36,12 @@ export function resultError(
   }
 }
 
+export function getCommonOpts () {
+  return {
+    timeout: 250
+  }
+}
+
 export function pagination<T = any>(pageNo: number, pageSize: number, array: T[]): T[] {
   const offset = (pageNo - 1) * Number(pageSize)
   const ret =

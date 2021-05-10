@@ -55,7 +55,7 @@
   import { defineComponent, reactive, ref, unref, toRefs, onBeforeMount } from 'vue';
   import { isValidUsername } from '/@/base/utils/validate';
   import logoPng from '/@/base/assets/images/logo-metersbonwe.png';
-  import { userStore } from '/@/base/store/modules/user';
+  import { userStore } from '/@/base/store/modules/user/';
   import { LoginActionModel } from '/@/base/services/models/user';
 
   export default defineComponent({
@@ -89,32 +89,16 @@
       };
 
       const handleLogin = async () => {
-        const form: LoginActionModel = unref(loginFormRef);
-        if (!form) return;
+        const isValidate = await loginFormRef.value.validate();
+        const form: LoginActionModel = unref(state.loginForm);
 
-        const isValidate = await form.validate();
         if (isValidate) {
-          const res = await userStore.login(form);
-          console.log(res);
+          try {
+            await userStore.loginAction(form);
+          } catch (error) {
+            console.error(error);
+          }
         }
-        // console.log(data)
-        // loginFormRef.value.validate((valid) => {
-        //   if (valid) {
-        //     state.loading = true;
-        //     this.$store
-        //       //   .dispatch('Login', this.loginForm)
-        //       .then(() => {
-        //         state.loading = false;
-        //         this.$router.push({ path: '/' });
-        //         location.reload();
-        //       })
-        //       .catch(() => {
-        //         state.loading = false;
-        //       });
-        //   } else {
-        //     return false;
-        //   }
-        // });
       };
 
       return {

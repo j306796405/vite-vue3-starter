@@ -40,13 +40,15 @@ export default defineConfig({
   ],
   resolve: {
     alias: [
+      // /@/xxxx => src/xxxx
       {
         find: /\/@\//,
         replacement: `${pathResolve('src')}/`,
       },
+      // /#/xxxx => types/xxxx
       {
-        find: /\/m\//,
-        replacement: `${pathResolve('mock')}/`,
+        find: /\/#\//,
+        replacement: pathResolve('types') + '/',
       },
     ],
   },

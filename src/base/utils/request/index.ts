@@ -1,7 +1,7 @@
 // axios配置  可自行根据项目进行更改，只需更改该文件即可，其他文件可以不动
 // The axios configuration can be changed according to the project, just change the file, other files can be left unchanged
 
-import type { AxiosResponse } from 'axios';
+import type { AxiosError, AxiosResponse } from 'axios';
 import type { RequestOptions, Result } from './types';
 import type { AxiosTransform, CreateAxiosOptions } from './axiosTransform';
 import { merge } from 'lodash-es';
@@ -125,29 +125,34 @@ const transform: AxiosTransform = {
   /**
    * @description: 响应错误处理
    */
-  responseInterceptorsCatch: (error: any) => {
+  responseInterceptorsCatch: (error: AxiosError, requestOptions: RequestOptions) => {
     const { response, code, message } = error || {};
     const msg: string = response?.data?.error?.message ?? '';
     const err: string = error?.toString?.() ?? '';
-    try {
-      // 超时处理
-      if (code === 'ECONNABORTED' && message.indexOf('timeout') !== -1) {
-        ElMessage.error('接口请求超时,请刷新页面重试!');
+
+    // 如果忽略错误，则不执行下面操作
+    if (!requestOptions.ignoreError) {
+      try {
+        // 超时处理
+        if (code === 'ECONNABORTED' && message.indexOf('timeout') !== -1) {
+          ElMessage.error('接口请求超时,请刷新页面重试!');
+        }
+
+        // 网络异常处理
+        if (err?.includes('Network Error')) {
+          ElMessageBox.confirm('请检查您的网络连接是否正常!', '网络异常', {
+            type: 'error',
+            confirmButtonText: '确定',
+          });
+        }
+      } catch (error) {
+        throw new Error(error);
       }
 
-      // 网络异常处理
-      if (err?.includes('Network Error')) {
-        ElMessageBox.confirm('请检查您的网络连接是否正常!', '网络异常', {
-          type: 'error',
-          confirmButtonText: '确定',
-        });
-      }
-    } catch (error) {
-      throw new Error(error);
+      // 匹配其他错误码情况
+      checkStatus(error?.response?.status, msg);
     }
 
-    // 匹配其他错误码情况
-    checkStatus(error?.response?.status, msg);
     return Promise.reject(error);
   },
 };
@@ -182,6 +187,10 @@ export function createAxios(opt?: Partial<CreateAxiosOptions>) {
            * 2: 两次请求不应该是同步代码
            */
           ignoreCancelToken: true,
+          // 是否取消错误提示
+          ignoreError: false,
+          // 是否假如loading动画
+          joinLoading: true,
         },
       },
       opt || {}
@@ -191,8 +200,4 @@ export function createAxios(opt?: Partial<CreateAxiosOptions>) {
 
 export const permissionRequest = createAxios({
   baseURL: ProxyEnum.PermissionProxy,
-});
-
-export const YFBGADRequest = createAxios({
-  baseURL: ProxyEnum.YFBGADProxy,
 });

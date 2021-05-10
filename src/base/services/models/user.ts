@@ -1,5 +1,5 @@
 export interface LoginActionModel {
-  userName: string;
+  username: string;
   password: string;
 }
 

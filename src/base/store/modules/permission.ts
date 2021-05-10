@@ -3,9 +3,9 @@ import { store } from '/@/base/store/index';
 import { login } from '/@/base/services/login';
 import { LoginActionModel, LoginModel } from '/@/base/services/models/login';
 
-const NAME = 'user';
+const NAME = 'permission';
 @Module({ namespaced: true, name: NAME, dynamic: true, store })
-export default class User extends VuexModule {
+export default class Permission extends VuexModule {
   private info: LoginModel | null = null;
 
   get getInfo() {
@@ -30,5 +30,5 @@ export default class User extends VuexModule {
   }
 }
 
-export { User };
-export const userStore = getModule<User>(User);
+export { Permission };
+export const userStore = getModule<Permission>(Permission);

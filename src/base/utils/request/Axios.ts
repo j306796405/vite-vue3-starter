@@ -7,7 +7,7 @@ import qs from 'qs';
 import { AxiosCanceler } from './axiosCancel';
 import { isFunction } from '/@/base/utils/is';
 import { cloneDeep } from 'lodash-es';
-
+import { startFullScreenLoading, closeFullScreenLoading } from '/@/base/utils/loading';
 import { errorResult } from './const';
 import { ContentTypeEnum, RequestEnum } from '/@/base/enums/httpEnum';
 
@@ -105,7 +105,6 @@ export class VAxios {
 
     // Response result interceptor processing
     this.axiosInstance.interceptors.response.use((res: AxiosResponse<any>) => {
-      debugger;
       // 接口返回成功移除对应的axiosCanceler
       res && axiosCanceler.removePending(res.config);
       if (responseInterceptors && isFunction(responseInterceptors)) {
@@ -117,7 +116,12 @@ export class VAxios {
     // Response result interceptor error capture
     responseInterceptorsCatch &&
       isFunction(responseInterceptorsCatch) &&
-      this.axiosInstance.interceptors.response.use(undefined, responseInterceptorsCatch);
+      this.axiosInstance.interceptors.response.use(
+        undefined,
+        (error: responseInterceptorsCatch) => {
+          responseInterceptorsCatch(error);
+        }
+      );
   }
 
   /**
@@ -207,10 +211,15 @@ export class VAxios {
     // ???
     conf = this.supportFormData(conf);
 
+    if (opt.joinLoading) {
+      startFullScreenLoading();
+    }
+
     return new Promise((resolve, reject) => {
       this.axiosInstance
         .request<any, AxiosResponse<Result>>(conf)
         .then((res: AxiosResponse<Result>) => {
+          closeFullScreenLoading();
           if (transformRequestHook && isFunction(transformRequestHook)) {
             const ret = transformRequestHook(res, opt);
             ret !== errorResult ? resolve(ret) : reject(new Error('request error!'));
@@ -220,8 +229,9 @@ export class VAxios {
           resolve((res as unknown) as Promise<T>);
         })
         .catch((e: Error) => {
+          closeFullScreenLoading();
           if (requestCatchHook && isFunction(requestCatchHook)) {
-            reject(requestCatchHook(e));
+            reject(requestCatchHook(e, opt));
             return;
           }
           reject(e);

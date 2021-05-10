@@ -18,6 +18,10 @@ export interface RequestOptions {
   // Whether to add a timestamp
   joinTime?: boolean;
   ignoreCancelToken?: boolean;
+  // ignore error
+  ignoreError?: boolean;
+  // join loading modal
+  joinLoading?: boolean;
 }
 
 export interface Result<T = any> {

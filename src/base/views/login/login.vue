@@ -53,10 +53,12 @@
 
 <script lang="ts">
   import { defineComponent, reactive, ref, unref, toRefs, onBeforeMount } from 'vue';
-  import { isValidUsername } from '/@/base/utils/validate';
-  import logoPng from '/@/base/assets/images/logo-metersbonwe.png';
-  import { userStore } from '/@/base/store/modules/user/';
-  import { LoginActionModel } from '/@/base/services/models/user';
+  import { isValidUsername } from '/@utils/validate';
+  import logoPng from '/@images/logo-metersbonwe.png';
+  import { userStore } from '/@store/modules/user/';
+  import { LoginActionModel } from '/@services/models/user';
+  import router from '/@router';
+  import PageEnum from '../../enums/pageEnum';
 
   export default defineComponent({
     name: 'Login',
@@ -95,6 +97,7 @@
         if (isValidate) {
           try {
             await userStore.loginAction(form);
+            router.replace(PageEnum.BASE_HOME);
           } catch (error) {
             console.error(error);
           }

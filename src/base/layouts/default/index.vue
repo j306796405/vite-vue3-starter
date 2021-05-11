@@ -1,3 +1,3 @@
 <template>
-  <div>123</div>
+  <div>Layout</div>
 </template>

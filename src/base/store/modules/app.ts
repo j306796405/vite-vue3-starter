@@ -1,6 +1,6 @@
 import { DeviceType } from '/@/base/enums/appEnum';
 import { VuexModule, Module, Mutation, getModule } from 'vuex-module-decorators';
-import { store } from '/@/base/store/index';
+import { store } from '/@store';
 
 const NAME = 'app';
 @Module({ namespaced: true, name: NAME, dynamic: true, store })

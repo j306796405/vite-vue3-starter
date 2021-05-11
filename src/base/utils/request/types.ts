@@ -1,4 +1,4 @@
-import { RequestStatusEnum } from '/@/base/enums/httpEnum';
+import { RequestStatusEnum } from '/@enums/httpEnum';
 
 export type ErrorMessageMode = 'none' | 'modal' | 'message' | undefined;
 

@@ -1,5 +1,5 @@
-import { permissionRequest } from '/@/base/utils/request';
-import { LoginModel } from '../models/user';
+import { permissionRequest } from '/@utils/request';
+import { LoginModel } from '/@models/user';
 
 export function login(params): Promise<LoginModel> {
   return permissionRequest.post({
@@ -17,5 +17,11 @@ export function getLoginUser(): Promise<LoginModel> {
 export function logout(): Promise<string> {
   return permissionRequest.get({
     url: `/users/logout`,
+  });
+}
+
+export function getMenu(): Promise<string> {
+  return permissionRequest.get({
+    url: `/menu/tree/byBusinessCode/management-center`,
   });
 }

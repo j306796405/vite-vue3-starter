@@ -1,7 +1,3 @@
-/*
- * @Author: Jeffery Jiang
- * @Description:
- */
 import { createStore, createLogger } from 'vuex';
 
 // Plug in logger when in development environment

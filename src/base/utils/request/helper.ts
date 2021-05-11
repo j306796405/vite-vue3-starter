@@ -1,4 +1,4 @@
-import { isObject, isString } from '/@/base/utils/is';
+import { isObject, isString } from '/@utils/is';
 
 export function createNow<T extends boolean>(
   join: boolean,

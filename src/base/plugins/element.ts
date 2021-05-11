@@ -19,6 +19,7 @@ import {
   ElMenu,
   ElMenuItem,
   ElSubmenu,
+  ElResult,
 } from 'element-plus';
 import { createApp } from 'vue';
 
@@ -43,4 +44,5 @@ export default function loadComponent(app: ReturnType<typeof createApp>) {
   app.use(ElMenu);
   app.use(ElSubmenu);
   app.use(ElMenuItem);
+  app.use(ElResult);
 }

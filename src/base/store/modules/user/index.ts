@@ -1,10 +1,9 @@
 import { VuexModule, Module, Mutation, getModule, Action } from 'vuex-module-decorators';
-import { store } from '/@/base/store/index';
-import { login, logout } from '/@/base/services/user';
-import { getLoginUser } from '/@/base/services/user';
-import { LoginActionModel, LoginModel } from '/@/base/services/models/user';
-import { setToken, clearLocalStorage } from '/@/base/logicUtils/storage/local';
-import { logError } from '/@/base/utils/log';
+import { store } from '/@store';
+import { login, logout, getLoginUser } from '/@services/user';
+import { LoginActionModel, LoginModel } from '/@models/user';
+import { setToken, clearLocalStorage } from '/@logicUtils/storage/local';
+import { logError } from '/@log';
 
 const NAME = 'user';
 @Module({ namespaced: true, name: NAME, dynamic: true, store })

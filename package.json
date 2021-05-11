@@ -5,7 +5,7 @@
     "dev": "cross-env NODE_ENV=development vite",
     "build": "vue-tsc --noEmit && vite build",
     "serve": "vite preview",
-    "fix": "eslint --fix",
+    "lint:eslint": "eslint \"{src,mock}/**/*.{vue,ts,tsx}\" --fix",
     "prepare": "husky install",
     "test": "jest"
   },
@@ -69,5 +69,9 @@
     "commitizen": {
       "path": "./node_modules/cz-customizable"
     }
+  },
+  "resolutions": {
+    "//": "Used to install imagemin dependencies, because imagemin may not be installed in China.If it is abroad, you can delete it",
+    "bin-wrapper": "npm:bin-wrapper-china"
   }
 }

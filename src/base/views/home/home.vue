@@ -5,13 +5,11 @@
 
 <script lang="ts">
   import { onMounted, defineComponent } from 'vue';
-  import { userStore } from '/@/base/store/modules/user/';
-  import { getAppEnvConfig } from '/@/base/utils/env';
+  import { userStore } from '/@store/modules/user/';
 
   export default defineComponent({
     setup() {
       onMounted(async () => {
-        console.log(getAppEnvConfig());
         userStore.loginUserAction();
       });
     },

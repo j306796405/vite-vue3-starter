@@ -1,6 +1,6 @@
 import { ElMessage } from 'element-plus';
-import router from '/@/base/router';
-import PageEnum from '/@/base/enums/pageEnum';
+import router from '/@base/router';
+import PageEnum from '/@enums/pageEnum';
 
 const error = ElMessage.error!;
 export default function checkStatus(status: number | undefined, msg: string): void {

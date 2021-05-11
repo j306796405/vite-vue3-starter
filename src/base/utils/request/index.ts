@@ -8,12 +8,12 @@ import checkStatus from './checkStatus';
 // import { useGlobSetting } from '/@/hooks/setting';
 import { ElMessage, ElMessageBox } from 'element-plus';
 
-import { RequestEnum, RequestStatusEnum, ContentTypeEnum } from '/@/base/enums/httpEnum';
-import { ProxyEnum } from '/@/base/enums/proxyEnum';
+import { RequestEnum, RequestStatusEnum, ContentTypeEnum } from '/@enums/httpEnum';
+import { ProxyEnum } from '/@enums/proxyEnum';
 
-import { isString } from '/@/base/utils/is';
-import { getToken } from '/@/base/utils/auth';
-import { setObjToUrlParams } from '/@/base/utils';
+import { isString } from '/@utils/is';
+import { getToken } from '/@logicUtils/storage/local';
+import { setObjToUrlParams } from '/@utils';
 import { errorResult } from './const';
 import { createNow, formatRequestDate } from './helper';
 

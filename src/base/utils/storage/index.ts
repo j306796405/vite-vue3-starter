@@ -1,5 +1,5 @@
 import { createStorage as create, CreateStorageParams } from './storageCache';
-import { enableStorageEncryption, DEFAULT_STORAGE_TIME } from '/@/base/settings/storageSetting';
+import { enableStorageEncryption, DEFAULT_STORAGE_TIME } from '/@settings/storageSetting';
 
 export type Options = Partial<CreateStorageParams>;
 

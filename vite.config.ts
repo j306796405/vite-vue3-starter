@@ -50,6 +50,94 @@ export default defineConfig({
         find: /\/#\//,
         replacement: pathResolve('types') + '/',
       },
+      {
+        find: /\/@base\//,
+        replacement: pathResolve('src/base') + '/',
+      },
+      {
+        find: /\/@logic\//,
+        replacement: pathResolve('src/logic') + '/',
+      },
+      {
+        find: /\/@services\//,
+        replacement: pathResolve('src/base/services') + '/',
+      },
+      {
+        find: /\/@store\//,
+        replacement: pathResolve('src/base/store') + '/',
+      },
+      {
+        find: /\/@store/,
+        replacement: pathResolve('src/base/store/index') + '/',
+      },
+      {
+        find: /\/@styles\//,
+        replacement: pathResolve('src/base/styles') + '/',
+      },
+      {
+        find: /\/@settings\//,
+        replacement: pathResolve('src/base/settings') + '/',
+      },
+      {
+        find: /\/@layouts\//,
+        replacement: pathResolve('src/base/layouts') + '/',
+      },
+      {
+        find: /\/@utils/,
+        replacement: pathResolve('src/base/utils'),
+      },
+      {
+        find: /\/@utils\//,
+        replacement: pathResolve('src/base/utils') + '/',
+      },
+      {
+        find: /\/@logicUtils\//,
+        replacement: pathResolve('src/base/logicUtils') + '/',
+      },
+      {
+        find: /\/@router\//,
+        replacement: pathResolve('src/base/router') + '/',
+      },
+      {
+        find: /\/@router/,
+        replacement: pathResolve('src/base/router'),
+      },
+      {
+        find: /\/@plugins\//,
+        replacement: pathResolve('src/base/plugins') + '/',
+      },
+      {
+        find: /\/@log/,
+        replacement: pathResolve('src/base/utils/log'),
+      },
+      {
+        find: /\/@models\//,
+        replacement: pathResolve('src/base/services/models') + '/',
+      },
+      {
+        find: /\/@enums\//,
+        replacement: pathResolve('src/base/enums') + '/',
+      },
+      {
+        find: /\/@assets\//,
+        replacement: pathResolve('src/base/assets/') + '/',
+      },
+      {
+        find: /\/@images\//,
+        replacement: pathResolve('src/base/assets/images/') + '/',
+      },
+      {
+        find: /\/@components/,
+        replacement: pathResolve('src/base/components/') + '/',
+      },
+      {
+        find: /\/@views/,
+        replacement: pathResolve('src/base/views/') + '/',
+      },
+      {
+        find: /\/@hooks/,
+        replacement: pathResolve('src/base/hooks/') + '/',
+      },
     ],
   },
   base: './', // 设置打包路径

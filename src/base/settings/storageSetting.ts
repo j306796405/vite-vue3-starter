@@ -1,4 +1,4 @@
-import { isDevMode } from '/@/base/utils/env';
+import { isDevMode } from '/@utils/env';
 
 export const DEFAULT_STORAGE_TIME = 60 * 60 * 24 * 7;
 
